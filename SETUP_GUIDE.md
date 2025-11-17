@@ -92,17 +92,17 @@ $dbname = 'Db_Munster_Sport';
 
 If your MySQL has a different configuration, update these values.
 
-## Features Overview
+## Features Implemented
 
-✅ User Registration & Login (Customer/Seller)
-✅ Product Management (Add, View, Delete)
-✅ Shopping Cart
-✅ Checkout System
-✅ Order History
-✅ Sales Tracking
-✅ Secure Password Hashing
-✅ SQL Injection Protection
-✅ Modern Responsive Design
+- User Registration & Login (Customer/Seller)
+- Product Management (Add, View, Delete)
+- Shopping Cart
+- Checkout System
+- Order History
+- Sales Tracking
+- Secure Password Hashing
+- SQL Injection Protection
+- Modern Responsive Design
 
 ## File Permissions
 

@@ -10,18 +10,18 @@ $success = [];
 
 // Test 1: PHP Version
 if (version_compare(PHP_VERSION, '7.4.0', '>=')) {
-    $success[] = "✅ PHP Version: " . PHP_VERSION;
+    $success[] = "PHP Version: " . PHP_VERSION;
 } else {
-    $errors[] = "❌ PHP Version too old: " . PHP_VERSION . " (Need 7.4+)";
+    $errors[] = "PHP Version too old: " . PHP_VERSION . " (Need 7.4+)";
 }
 
 // Test 2: Required Extensions
 $required_extensions = ['mysqli', 'session'];
 foreach ($required_extensions as $ext) {
     if (extension_loaded($ext)) {
-        $success[] = "✅ PHP Extension '$ext' is loaded";
+        $success[] = "PHP Extension '$ext' is loaded";
     } else {
-        $errors[] = "❌ PHP Extension '$ext' is NOT loaded";
+        $errors[] = "PHP Extension '$ext' is NOT loaded";
     }
 }
 
@@ -29,16 +29,16 @@ foreach ($required_extensions as $ext) {
 try {
     require_once 'db.php';
     if ($conn) {
-        $success[] = "✅ Database connection successful";
+        $success[] = "Database connection successful";
         
         // Test 4: Check Tables
         $tables = ['users', 'products', 'cart', 'orders', 'order_items'];
         foreach ($tables as $table) {
             $result = mysqli_query($conn, "SHOW TABLES LIKE '$table'");
             if (mysqli_num_rows($result) > 0) {
-                $success[] = "✅ Table '$table' exists";
+                $success[] = "Table '$table' exists";
             } else {
-                $errors[] = "❌ Table '$table' does NOT exist";
+                $errors[] = "Table '$table' does NOT exist";
             }
         }
         
@@ -46,16 +46,16 @@ try {
         $user_check = mysqli_query($conn, "SELECT COUNT(*) as count FROM users");
         $user_data = mysqli_fetch_assoc($user_check);
         if ($user_data['count'] > 0) {
-            $success[] = "✅ Users table has data ({$user_data['count']} users)";
+            $success[] = "Users table has data ({$user_data['count']} users)";
         } else {
-            $warnings[] = "⚠️ No users found in database (Expected test accounts)";
+            $warnings[] = "No users found in database (Expected test accounts)";
         }
         
     } else {
-        $errors[] = "❌ Database connection failed";
+        $errors[] = "Database connection failed";
     }
 } catch (Exception $e) {
-    $errors[] = "❌ Database error: " . $e->getMessage();
+    $errors[] = "Database error: " . $e->getMessage();
 }
 
 // Test 6: File Permissions
@@ -70,9 +70,9 @@ $required_files = [
 
 foreach ($required_files as $file) {
     if (file_exists($file) && is_readable($file)) {
-        $success[] = "✅ File '$file' exists and is readable";
+        $success[] = "File '$file' exists and is readable";
     } else {
-        $errors[] = "❌ File '$file' is missing or not readable";
+        $errors[] = "File '$file' is missing or not readable";
     }
 }
 
@@ -156,24 +156,24 @@ foreach ($required_files as $file) {
 </head>
 <body>
     <div class="container">
-        <h1>🔍 Installation Test Results</h1>
+        <h1>Installation Test Results</h1>
         
         <?php if (!empty($success)): ?>
-            <h3 style="color: #10b981;">✅ Passed Tests (<?= count($success) ?>)</h3>
+            <h3 style="color: #10b981;">Passed Tests (<?= count($success) ?>)</h3>
             <?php foreach ($success as $msg): ?>
                 <div class="success"><?= $msg ?></div>
             <?php endforeach; ?>
         <?php endif; ?>
         
         <?php if (!empty($warnings)): ?>
-            <h3 style="color: #f59e0b; margin-top: 30px;">⚠️ Warnings (<?= count($warnings) ?>)</h3>
+            <h3 style="color: #f59e0b; margin-top: 30px;">Warnings (<?= count($warnings) ?>)</h3>
             <?php foreach ($warnings as $msg): ?>
                 <div class="warning"><?= $msg ?></div>
             <?php endforeach; ?>
         <?php endif; ?>
         
         <?php if (!empty($errors)): ?>
-            <h3 style="color: #ef4444; margin-top: 30px;">❌ Failed Tests (<?= count($errors) ?>)</h3>
+            <h3 style="color: #ef4444; margin-top: 30px;">Failed Tests (<?= count($errors) ?>)</h3>
             <?php foreach ($errors as $msg): ?>
                 <div class="error"><?= $msg ?></div>
             <?php endforeach; ?>
@@ -181,12 +181,12 @@ foreach ($required_files as $file) {
         
         <div class="summary">
             <?php if (empty($errors)): ?>
-                <h2 style="color: #10b981;">🎉 All Tests Passed!</h2>
+                <h2 style="color: #10b981;">All Tests Passed!</h2>
                 <p>Your e-commerce platform is ready to use.</p>
                 <a href="index.php" class="btn">Go to Homepage</a>
                 <a href="login.php" class="btn">Login</a>
             <?php else: ?>
-                <h2 style="color: #ef4444;">⚠️ Setup Issues Detected</h2>
+                <h2 style="color: #ef4444;">Setup Issues Detected</h2>
                 <p>Please fix the errors above before using the application.</p>
                 <p>Refer to SETUP_GUIDE.md for detailed instructions.</p>
                 <a href="test_install.php" class="btn">Retest</a>

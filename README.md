@@ -5,18 +5,18 @@ A complete e-commerce web application built with PHP and MySQL, featuring separa
 ## Features
 
 ### For Customers
-- 🛍️ Browse available products
-- 🛒 Add products to cart
-- 💳 Complete checkout process
-- 📦 View order history
-- 👤 User registration and login
+- Browse available products
+- Add products to cart
+- Complete checkout process
+- View order history
+- User registration and login
 
 ### For Sellers
-- 💼 Seller dashboard with sales statistics
-- ➕ Add new products with descriptions and pricing
-- 📊 View all products and manage inventory
-- 📦 Track sales and customer orders
-- 🗑️ Delete products
+- Seller dashboard with sales statistics
+- Add new products with descriptions and pricing
+- View all products and manage inventory
+- Track sales and customer orders
+- Delete products
 
 ### Security Features
 - Password hashing with bcrypt
