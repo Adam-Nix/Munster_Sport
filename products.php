@@ -20,7 +20,7 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
     <div class="container">
         <header>
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-                <img src="logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
+                <img src="images/logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
                 <div style="flex-grow: 1;">
                     <h1 style="margin: 0;">Munster Sport</h1>
                     <p style="margin: 5px 0 0 0;">Quality Sports Equipment</p>
@@ -48,7 +48,7 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
                 <?php while ($p = mysqli_fetch_assoc($result)): ?>
                     <div class="product-card">
                         <?php if ($p['image']): ?>
-                            <img src="uploads/<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>" class="product-image">
+                            <img src="images/<?= htmlspecialchars($p['image']) ?>" alt="<?= htmlspecialchars($p['name']) ?>" class="product-image">
                         <?php else: ?>
                             <div class="product-image" style="display: flex; align-items: center; justify-content: center; font-size: 40px; background: #f5f5f5;">📦</div>
                         <?php endif; ?>

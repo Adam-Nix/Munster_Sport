@@ -16,9 +16,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Invalid email address!";
     } else {
+        // Company email to receive queries
+        $company_email = "info@munstersport.com";
         
+        // Email headers
+        $headers = "From: " . $email . "\r\n";
+        $headers .= "Reply-To: " . $email . "\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
         
-        $success = "Thank you for contacting us!";
+        // Email body
+        $email_body = "Customer Query from Munster Sport Website\n\n";
+        $email_body .= "Name: " . $name . "\n";
+        $email_body .= "Email: " . $email . "\n";
+        $email_body .= "Subject: " . $subject . "\n\n";
+        $email_body .= "Message:\n" . $message . "\n";
+        
+        // Send email (will work if mail server is configured)
+        if (mail($company_email, "Website Query: " . $subject, $email_body, $headers)) {
+            $success = "Thank you for contacting us! We'll respond to your query shortly.";
+        } else {
+            // Store in database as fallback if mail server not configured
+            $stmt = mysqli_prepare($conn, "INSERT INTO contact_messages (name, email, subject, message) VALUES (?, ?, ?, ?)");
+            mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $subject, $message);
+            
+            if (mysqli_stmt_execute($stmt)) {
+                $success = "Thank you for contacting us! Your message has been received.";
+            } else {
+                $error = "Sorry, there was an error sending your message. Please try again.";
+            }
+        }
     }
 }
 ?>
@@ -34,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container">
         <header>
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-                <img src="logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
+                <img src="images/logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
                 <div style="flex-grow: 1;">
                     <h1 style="margin: 0;">Munster Sport</h1>
                 </div>

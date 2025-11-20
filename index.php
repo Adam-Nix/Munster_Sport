@@ -21,7 +21,7 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
     <div class="container">
         <header>
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-                <img src="logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
+                <img src="images/logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
                 <div style="flex-grow: 1;">
                     <h1 style="margin: 0;">Munster Sport</h1>
                 </div>
@@ -41,7 +41,7 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
 
         <!-- Hero Section -->
         <div style="text-align: center; padding: 60px 20px; background: white; border: 3px solid #1655c; margin-bottom: 40px;">
-            <img src="logo.png" alt="Munster Sport" style="max-width: 300px; margin-bottom: 30px;">
+            <img src="images/logo.png" alt="Munster Sport" style="max-width: 300px; margin-bottom: 30px;">
             <h2 style="color: #1655c; font-size: 36px; margin-bottom: 20px;">Welcome to Munster Sport</h2>
             <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
                 Sports Equipment for Ireland

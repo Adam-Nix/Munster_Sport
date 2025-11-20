@@ -22,7 +22,7 @@ $username = $_SESSION['username'];
     <div class="container">
         <header>
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-                <img src="logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
+                <img src="images/logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
                 <div style="flex-grow: 1;">
                     <h1 style="margin: 0;">Munster Sport - Staff Area</h1>
                 </div>

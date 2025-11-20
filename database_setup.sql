@@ -27,49 +27,23 @@ CREATE TABLE IF NOT EXISTS products (
     FOREIGN KEY (seller_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Cart table (uses session_id for guest shopping)
-CREATE TABLE IF NOT EXISTS cart (
+-- Contact messages table (fallback when email server not configured)
+CREATE TABLE IF NOT EXISTS contact_messages (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    session_id VARCHAR(255) NOT NULL,
-    product_id INT NOT NULL,
-    quantity INT DEFAULT 1,
-    size VARCHAR(10),
-    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
-    INDEX(session_id)
-);
-
--- Orders table (stores customer info directly, no user account needed)
-CREATE TABLE IF NOT EXISTS orders (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    customer_name VARCHAR(100) NOT NULL,
-    customer_email VARCHAR(100) NOT NULL,
-    customer_phone VARCHAR(20),
-    total_amount DECIMAL(10, 2) NOT NULL,
-    status ENUM('pending', 'processing', 'completed', 'cancelled') DEFAULT 'pending',
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    subject VARCHAR(200) NOT NULL,
+    message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Order items table
-CREATE TABLE IF NOT EXISTS order_items (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    order_id INT NOT NULL,
-    product_id INT NOT NULL,
-    seller_id INT NOT NULL,
-    quantity INT NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    size VARCHAR(10),
-    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
-    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
-    FOREIGN KEY (seller_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
--- Insert staff accounts (all use password: Munster123)
+-- Insert staff accounts with hashed passwords (all use password: Munster123)
 INSERT INTO users (username, password, role, email) VALUES 
-('adam', 'Munster123', 'seller', 'adam@munstersport.com'),
-('brandon', 'Munster123', 'seller', 'brandon@munstersport.com'),
-('darren', 'Munster123', 'seller', 'darren@munstersport.com'),
-('ernest', 'Munster123', 'seller', 'ernest@munstersport.com');
+('adam', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'adam@munstersport.com'),
+('brandon', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'brandon@munstersport.com'),
+('darren', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'darren@munstersport.com'),
+('ernest', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'ernest@munstersport.com'),
+('admin', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'admin@munstersport.com');
 
 -- Insert Munster Sport stock items (all owned by adam - user id 1)
 INSERT INTO products (seller_id, name, description, price, stock, image) VALUES 

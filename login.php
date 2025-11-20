@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_stmt_get_result($stmt);
     $user = mysqli_fetch_assoc($result);
 
-    if ($user && $password === $user['password']) {
+    if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="form-container">
         <div style="text-align: center; margin-bottom: 20px;">
-            <img src="logo.png" alt="Munster Sport" style="max-width: 200px;">
+            <img src="images/logo.png" alt="Munster Sport" style="max-width: 200px;">
         </div>
         
         <h2>Staff Login</h2>
