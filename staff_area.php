@@ -29,6 +29,8 @@ $username = $_SESSION['username'];
                 <div class="nav-links">
                     <a href="index.php">Public Site</a>
                     <a href="staff_area.php">Staff Area</a>
+                    <a href="stock_management.php">Stock Management</a>
+                    <a href="order_management.php">Orders</a>
                     <a href="logout.php">Logout</a>
                 </div>
             </div>
@@ -43,70 +45,38 @@ $username = $_SESSION['username'];
         <!-- Staff Resources Grid -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
             
-            <!-- Secure File Downloads -->
+            <!-- Order Management -->
             <div style="background: white; padding: 30px; border: 3px solid #1655c; border-radius: 8px;">
-                <h3 style="color: #1655c; margin-bottom: 20px;">📁 Company Documents</h3>
+                <h3 style="color: #1655c; margin-bottom: 20px;">📦 Order Management</h3>
                 <div style="background: #f8f9fa; padding: 20px; border-radius: 4px;">
-                    <p style="margin-bottom: 15px;"><strong>Read-Only Access:</strong></p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e6e6e6;">
-                            <a href="#" style="color: #1655c; text-decoration: none;">📄 Product Catalogues (PDF)</a>
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e6e6e6;">
-                            <a href="#" style="color: #1655c; text-decoration: none;">📊 Price Lists (Excel)</a>
-                        </li>
-                        <li style="padding: 8px 0; border-bottom: 1px solid #e6e6e6;">
-                            <a href="#" style="color: #1655c; text-decoration: none;">📝 Policy Documents (Word)</a>
-                        </li>
-                        <li style="padding: 8px 0;">
-                            <a href="#" style="color: #1655c; text-decoration: none;">📋 Training Materials (PDF)</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Staff Shared Area -->
-            <div style="background: white; padding: 30px; border: 3px solid #1655c; border-radius: 8px;">
-                <h3 style="color: #1655c; margin-bottom: 20px;">💾 U: Drive Access</h3>
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 4px;">
-                    <p style="margin-bottom: 15px;"><strong>Shared Staff Area:</strong></p>
+                    <p style="margin-bottom: 15px;"><strong>Customer Orders:</strong></p>
                     <div style="text-align: center; padding: 20px;">
-                        <div style="background: #e6f2ff; color: #1655c; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 2px solid #1655c;">
-                            <strong>\\server\staff_shared</strong>
-                        </div>
-                        <p style="color: #666; font-size: 14px;">Read/Write access for all staff<br>Access from your workstation</p>
+                        <a href="order_management.php" style="background: #28a745; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
+                            View All Orders
+                        </a>
                     </div>
-                </div>
-            </div>
-
-            <!-- Staff Email -->
-            <div style="background: white; padding: 30px; border: 3px solid #1655c; border-radius: 8px;">
-                <h3 style="color: #1655c; margin-bottom: 20px;">📧 Staff Email</h3>
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 4px;">
-                    <p style="margin-bottom: 15px;"><strong>Your Email Account:</strong></p>
-                    <div style="text-align: center; padding: 20px;">
-                        <div style="background: #e6f2ff; color: #1655c; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 2px solid #1655c;">
-                            <?= htmlspecialchars($username) ?>@munstersport.com
-                        </div>
-                        <p style="color: #666; font-size: 14px;">Access via Outlook on your workstation</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Security Notice -->
-        <div style="background: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
-            <div style="display: flex; align-items: center;">
-                <span style="font-size: 24px; margin-right: 15px;">🔒</span>
-                <div>
-                    <p style="margin: 0; font-weight: bold; color: #856404;">Secure Office Network Access</p>
-                    <p style="margin: 5px 0 0 0; color: #856404; font-size: 14px;">
-                        You are accessing company resources through a secure connection. 
-                        All activity is monitored and backed up according to company security policy.
+                    <p style="font-size: 14px; color: #666; text-align: center;">
+                        Manage customer orders, update status, and track deliveries
                     </p>
                 </div>
             </div>
+
+            <!-- Stock Management -->
+            <div style="background: white; padding: 30px; border: 3px solid #1655c; border-radius: 8px;">
+                <h3 style="color: #1655c; margin-bottom: 20px;">📊 Stock Management</h3>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 4px;">
+                    <p style="margin-bottom: 15px;"><strong>Manage Inventory:</strong></p>
+                    <div style="text-align: center; padding: 20px;">
+                        <a href="stock_management.php" style="background: #28a745; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
+                            Update Stock Levels
+                        </a>
+                    </div>
+                    <p style="font-size: 14px; color: #666; text-align: center;">
+                        View and update product inventory, monitor low stock alerts
+                    </p>
+                </div>
+            </div>
+
         </div>
 
 

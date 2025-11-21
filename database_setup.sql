@@ -37,9 +37,49 @@ CREATE TABLE IF NOT EXISTS contact_messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Cart items table (for temporary storage before checkout)
+CREATE TABLE IF NOT EXISTS cart_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    session_id VARCHAR(128) NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT DEFAULT 1,
+    price DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+-- Orders table
+CREATE TABLE IF NOT EXISTS orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_number VARCHAR(50) UNIQUE NOT NULL,
+    customer_name VARCHAR(100) NOT NULL,
+    customer_email VARCHAR(100) NOT NULL,
+    customer_phone VARCHAR(20),
+    customer_address TEXT NOT NULL,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    status ENUM('pending', 'processing', 'shipped', 'delivered', 'cancelled') DEFAULT 'pending',
+    payment_method VARCHAR(50) DEFAULT 'cash_on_delivery',
+    notes TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Order items table
+CREATE TABLE IF NOT EXISTS order_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    product_name VARCHAR(100) NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
 -- Insert staff accounts with hashed passwords (all use password: Munster123)
 INSERT INTO users (username, password, role, email) VALUES 
-('adam', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'adam@munstersport.com'),
+('adam', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'adam@munstersports.com'),
 ('brandon', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'brandon@munstersport.com'),
 ('darren', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'darren@munstersport.com'),
 ('ernest', '$2y$10$QrZ9Yd2iWoBZsXXv5uLNFuAed.X2jO17BIYf7RNjEwBs1ySRXCGqu', 'seller', 'ernest@munstersport.com'),

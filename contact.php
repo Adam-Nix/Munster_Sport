@@ -1,6 +1,8 @@
 <?php
 session_start();
-require 'db.php';
+require 'cart_functions.php';
+
+$cart_count = get_cart_count();
 
 $success = '';
 $error = '';
@@ -66,8 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 <div class="nav-links">
                     <a href="index.php">Home</a>
+
                     <a href="contact.php">Contact</a>
                     <a href="about.php">About Us</a>
+                    <a href="cart.php">Cart (<?= $cart_count ?>)</a>
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <a href="staff_area.php">Staff Area</a>
                         <a href="logout.php">Logout</a>
@@ -113,9 +117,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
             </form>
-
+        </div>
+    </div>
     
-    <footer style="text-align: center; padding: 30px; background: white; border-top: 3px solid #1655c; margin-top: 50px;">
+    <footer style="text-align: center; padding: 30px; background: white; border-top: 3px solid #1655c2; margin-top: 50px;">
         <p>&copy; <?= date('Y') ?> Munster Sport. All rights reserved.</p>
         <p><a href="contact.php">Contact Us</a> | <a href="about.php">About</a></p>
     </footer>

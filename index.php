@@ -1,6 +1,8 @@
 <?php
 session_start();
-require 'db.php';
+require 'cart_functions.php';
+
+$cart_count = get_cart_count();
 
 // Get all products with stock
 $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name 
@@ -27,8 +29,10 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
                 </div>
                 <div class="nav-links">
                     <a href="index.php">Home</a>
+
                     <a href="contact.php">Contact</a>
                     <a href="about.php">About Us</a>
+                    <a href="cart.php">Cart (<?= $cart_count ?>)</a>
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <a href="staff_area.php">Staff Area</a>
                         <a href="logout.php">Logout</a>
@@ -69,9 +73,17 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
                             </div>
                             <div class="product-price">€<?= number_format($p['price'], 2) ?></div>
                             
-                            <!-- Simple product info display -->
+                            <!-- Purchase Option -->
                             <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px;">
-                                <p style="margin: 0; font-size: 14px; color: #666;">Available in store</p>
+                                <?php if ($p['stock'] > 0): ?>
+                                    <p style="margin: 0 0 10px 0; font-size: 14px; color: #28a745; font-weight: bold;">✓ Available in store (<?= $p['stock'] ?> left)</p>
+                                    <div style="display: flex; gap: 10px; align-items: center;">
+                                        <input type="number" id="qty-<?= $p['id'] ?>" class="qty-input" value="1" min="1" max="<?= $p['stock'] ?>" style="width: 60px; padding: 6px; border: 1px solid #ddd; border-radius: 4px;">
+                                        <button onclick="addToCart(<?= $p['id'] ?>)" style="flex: 1; background: #28a745; color: white; border: none; padding: 8px; border-radius: 4px; cursor: pointer; font-weight: bold;">Add to Cart</button>
+                                    </div>
+                                <?php else: ?>
+                                    <p style="margin: 0; font-size: 14px; color: #dc3545; font-weight: bold;">✗ Out of Stock</p>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -86,5 +98,39 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
         <p>&copy; <?= date('Y') ?> Munster Sport. All rights reserved.</p>
         <p><a href="contact.php">Contact Us</a> | <a href="about.php">About</a></p>
     </footer>
+
+    <style>
+        .qty-input {
+            width: 60px !important;
+        }
+    </style>
+
+    <script>
+        function addToCart(productId) {
+            const quantity = document.getElementById('qty-' + productId).value;
+            
+            fetch('cart_functions.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'action=add_to_cart&product_id=' + productId + '&quantity=' + quantity
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Item added to cart!');
+                    // Reload to update cart count
+                    location.reload();
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('Error adding to cart');
+                console.error('Error:', error);
+            });
+        }
+    </script>
 </body>
 </html>

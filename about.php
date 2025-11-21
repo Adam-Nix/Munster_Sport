@@ -1,6 +1,8 @@
 <?php
 session_start();
-require 'db.php';
+require 'cart_functions.php';
+
+$cart_count = get_cart_count();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +22,10 @@ require 'db.php';
                 </div>
                 <div class="nav-links">
                     <a href="index.php">Home</a>
+
                     <a href="contact.php">Contact</a>
                     <a href="about.php">About Us</a>
+                    <a href="cart.php">Cart (<?= $cart_count ?>)</a>
                     <?php if (isset($_SESSION['user_id'])): ?>
                         <a href="staff_area.php">Staff Area</a>
                         <a href="logout.php">Logout</a>

@@ -32,6 +32,13 @@ function check_login($required_role = null) {
         header('Location: login.php');
         exit;
     }
+
+    // Check for forced password change
+    $current_page = basename($_SERVER['PHP_SELF']);
+    if (isset($_SESSION['force_password_change']) && $_SESSION['force_password_change'] === true && $current_page !== 'update_password.php') {
+        header('Location: update_password.php');
+        exit;
+    }
     
     if ($required_role && $_SESSION['role'] !== $required_role) {
         header('Location: index.php');
