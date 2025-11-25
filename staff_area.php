@@ -15,7 +15,7 @@ $username = $_SESSION['username'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Area - Munster Sport</title>
+    <title>Staff Area - Munster Sports</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,7 +24,7 @@ $username = $_SESSION['username'];
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
                 <img src="images/logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
                 <div style="flex-grow: 1;">
-                    <h1 style="margin: 0;">Munster Sport - Staff Area</h1>
+                    <h1 style="margin: 0;">Munster Sports - Staff Area</h1>
                 </div>
                 <div class="nav-links">
                     <a href="index.php">Public Site</a>

@@ -16,16 +16,17 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Munster Sport - Quality Sports Equipment</title>
+    <title>Munster Sports - Quality Sports Equipment in Munster</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-                <img src="images/logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
+                <img src="images/logo.png" alt="Munster Sports" style="height: 60px; margin-right: 20px;">
                 <div style="flex-grow: 1;">
-                    <h1 style="margin: 0;">Munster Sport</h1>
+                    <h1 style="margin: 0;">Munster Sports</h1>
+                    <p style="margin: 4px 0 0; color: #1655c; font-size: 14px; font-weight: 600;">Proudly supporting Munster Rugby</p>
                 </div>
                 <div class="nav-links">
                     <a href="index.php">Home</a>
@@ -45,8 +46,8 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
 
         <!-- Hero Section -->
         <div style="text-align: center; padding: 60px 20px; background: white; border: 3px solid #1655c; margin-bottom: 40px;">
-            <img src="images/logo.png" alt="Munster Sport" style="max-width: 300px; margin-bottom: 30px;">
-            <h2 style="color: #1655c; font-size: 36px; margin-bottom: 20px;">Welcome to Munster Sport</h2>
+            <img src="images/logo.png" alt="Munster Sports" style="max-width: 300px; margin-bottom: 30px;">
+            <h2 style="color: #1655c; font-size: 36px; margin-bottom: 20px;">Welcome to Munster Sports</h2>
             <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
                 Sports Equipment for Ireland
             </p>
@@ -95,7 +96,7 @@ $result = mysqli_query($conn, "SELECT p.*, u.username as seller_name
     </div>
     
     <footer style="text-align: center; padding: 30px; background: white; border-top: 3px solid #1655c; margin-top: 50px;">
-        <p>&copy; <?= date('Y') ?> Munster Sport. All rights reserved.</p>
+        <p>&copy; <?= date('Y') ?> Munster Sports. All rights reserved.</p>
         <p><a href="contact.php">Contact Us</a> | <a href="about.php">About</a></p>
     </footer>
 

@@ -9,7 +9,7 @@ $cart_count = get_cart_count();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Munster Sport</title>
+    <title>About Us - Munster Sports</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +18,7 @@ $cart_count = get_cart_count();
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
                 <img src="images/logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
                 <div style="flex-grow: 1;">
-                    <h1 style="margin: 0;">Munster Sport</h1>
+                    <h1 style="margin: 0;">Munster Sports</h1>
                 </div>
                 <div class="nav-links">
                     <a href="index.php">Home</a>
@@ -39,14 +39,14 @@ $cart_count = get_cart_count();
         <!-- Hero Section -->
         <div style="text-align: center; padding: 60px 20px; background: white; border: 3px solid #1655c; margin-bottom: 40px;">
             <img src="images/logo.png" alt="Munster Sport" style="max-width: 300px; margin-bottom: 30px;">
-            <h2 style="color: #1655c; font-size: 36px; margin-bottom: 20px;">About Munster Sport</h2>
+            <h2 style="color: #1655c; font-size: 36px; margin-bottom: 20px;">About Munster Sports</h2>
         </div>
 
         <div style="max-width: 800px; margin: 40px auto;">
             <div style="background: white; padding: 30px; border: 3px solid #1655c; margin-bottom: 30px;">
                 <h3 style="color: #1655c;">Company Information</h3>
                 <div>
-                    <p>Munster Sport is a sports equipment company based in Limerick, Ireland.</p>
+                    <p>Munster Sports is a sports equipment company based in Limerick, Ireland.</p>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@ $cart_count = get_cart_count();
     </div>
     
     <footer style="text-align: center; padding: 30px; background: white; border-top: 3px solid #1655c; margin-top: 50px;">
-        <p>&copy; <?= date('Y') ?> Munster Sport. All rights reserved.</p>
+        <p>&copy; <?= date('Y') ?> Munster Sports. All rights reserved.</p>
         <p><a href="contact.php">Contact Us</a> | <a href="about.php">About</a></p>
     </footer>
 </body>

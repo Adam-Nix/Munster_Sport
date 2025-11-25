@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         
         <h2>Staff Login</h2>
-        <p style="text-align: center; color: #666;">Secure access for Munster Sport employees</p>
+        <p style="text-align: center; color: #666;">Secure access for Munster Sports employees</p>
         
         <?php if ($error): ?>
             <div class="alert alert-error"><?= $error ?></div>

@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Password - Munster Sport</title>
+    <title>Update Password - Munster Sports</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .update-container {

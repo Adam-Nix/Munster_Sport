@@ -29,7 +29,7 @@ $orders_result = mysqli_query($conn, $orders_query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Management - Munster Sport</title>
+    <title>Order Management - Munster Sports</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .orders-container {
@@ -193,7 +193,7 @@ $orders_result = mysqli_query($conn, $orders_query);
             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
                 <img src="images/logo.png" alt="Munster Sport" style="height: 60px; margin-right: 20px;">
                 <div style="flex-grow: 1;">
-                    <h1 style="margin: 0;">Munster Sport - Staff Area</h1>
+                    <h1 style="margin: 0;">Munster Sports - Staff Area</h1>
                 </div>
                 <div class="nav-links">
                     <a href="index.php">Public Site</a>
@@ -296,7 +296,7 @@ $orders_result = mysqli_query($conn, $orders_query);
     </div>
     
     <footer style="text-align: center; padding: 30px; background: white; border-top: 3px solid #1655c2; margin-top: 50px;">
-        <p>&copy; <?= date('Y') ?> Munster Sport. All rights reserved.</p>
+        <p>&copy; <?= date('Y') ?> Munster Sports. All rights reserved.</p>
     </footer>
 </body>
 </html>
